@@ -1,0 +1,98 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #333;
+    overflow: hidden;
+}
+
+#gameCanvas {
+    border: 1px solid #fff;
+    background-color: #000;
+}
+
+/* テキスト入力欄のスタイル (必要に応じて調整) */
+#kanjiInput {
+    padding: 10px;
+    font-size: 20px;
+    text-align: center;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    /* display: none; by default in HTML, JS will manage visibility and position */
+}
+.game-input {
+    position: absolute; /* Canvasに重ねるため */
+    padding: 10px;
+    font-size: 24px; /* ゲーム内のフォントサイズと合わせる */
+    text-align: center;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    /* 必要に応じて背景色、文字色、幅などを調整 */
+    width: 300px; /* 例 */
+    z-index: 10; /* Canvasより手前に表示 */
+}
+
+/* ── 追加 ── */
+body, input, button {
+  font-family: 'UDデジタル教科書体', sans-serif;
+}
+
+.locked {
+  filter: grayscale(1) brightness(0.3);
+}
+
+/* ── #monsterContainer のスタイル ── */
+#monsterContainer {
+   padding: 20px;
+   /* display は JS で制御します */
+   grid-template-columns: repeat(5, 150px);  /* 横5列に固定 */
+   gap: 10px;
+   justify-content: center;               /* 中央寄せ */
+}
+
+.monster-card {
+  width: 150px;
+  text-align: center;
+}
+
+.monster-card img {
+  width: 100%;
+  height: auto;
+}
+
+/* 【追加】戻るボタン */
+.back-button {
+  grid-column: 1 / -1;       /* グリッドの全列にまたがる */
+  padding: 8px 12px;
+  background-color: #555;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.back-button:hover {
+  background-color: #666;
+}
+
+/* === アクセシビリティ: 色弱フレンドリー & 大きめフォント === */
+:root{
+  --clr-main:#1e90ff;
+  --clr-accent:#ff6347;
+  --fs-base:16px;
+}
+body.cb-mode{
+  /* 色弱対応：青→濃紺, 赤→茶 */
+  --clr-main:#005bbb;
+  --clr-accent:#b15b00;
+}
+body.big-font{
+  --fs-base:19.2px;   /* 16px ×1.2 */
+}
+html,body{ font-size:var(--fs-base); }
+.btn{ background:var(--clr-main); }
+.btn-accent{ background:var(--clr-accent); }
